@@ -1,0 +1,163 @@
+.allWrap {
+  height: 100%;
+  background-color: var(--violet);
+}
+
+@media screen and (min-width: 768px) {
+  .allWrap {
+    height: 195px;
+    background-color: var(--violet);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .secondWrap {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+.wrapHead {
+  padding: 12px 0 64px;
+}
+
+.wrapInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapInfo {
+    gap: 32px;
+    position: absolute;
+    top: -31px;
+    left: 124px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapInfo {
+    flex-direction: row;
+  }
+}
+
+.title {
+  font-size: 36px;
+  line-height: normal;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    order: 1;
+    font-size: 45px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 64px;
+  }
+}
+
+.headTextWrap {
+  order: 1;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .headTextWrap {
+    order: 2;
+    text-align: left;
+  }
+}
+
+.role {
+  font-size: 20px;
+  line-height: normal;
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .role {
+    font-size: 32px;
+  }
+}
+
+.imgWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 187px;
+  height: 187px;
+  border-radius: 50%;
+  overflow: hidden;
+  order: 2;
+  background-color: var(--white);
+}
+
+.imgWrap > img {
+  min-height: 187px;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .imgWrap {
+    order: 1;
+  }
+}
+
+.description {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .description {
+    padding: 49px;
+    flex-direction: row;
+    gap: 129px;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  order: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .contacts {
+    order: 2;
+  }
+}
+
+.contactLink {
+  line-height: 1.36em;
+}
+
+.text {
+  line-height: 1.36em;
+  order: 2;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    max-width: 630px;
+    order: 1;
+  }
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

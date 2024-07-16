@@ -1,0 +1,64 @@
+:root {
+  --white: #ffffff;
+  --black: #151317;
+  --grey: #808185;
+  --light-grey: #f8f8f8;
+  --blue: #0740ea;
+  --red: #ff6161;
+  --violet: #512689;
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: "Roboto";
+  color: var(--black);
+  line-height: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* .container {
+  max-width: 375px;
+  padding: 16px;
+  margin: 0 auto;
+  outline: 2px solid red;
+}
+
+@media screen and (min-width: 1120px) {
+  .container {
+    max-width: 975px;
+  }
+} */

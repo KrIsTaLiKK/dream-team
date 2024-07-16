@@ -1,0 +1,19 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 8px 16px;
+  line-height: 1.36em;
+  color: var(--light-grey);
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid var(--light-grey);
+  box-shadow: none;
+
+  transition: box-shadow 250ms var(--cubic);
+}
+
+.btn:is(:hover, :focus) {
+  box-shadow: rgb(227, 219, 219) 1px 2px 8px 1px;
+}

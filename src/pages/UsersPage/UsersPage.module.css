@@ -1,0 +1,13 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 32px;
+}
+
+@media screen and (min-width: 1024px) {
+  .wrap {
+    padding-bottom: 69px;
+  }
+}

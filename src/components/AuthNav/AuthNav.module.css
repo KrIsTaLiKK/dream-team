@@ -1,0 +1,39 @@
+.authList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+  padding-bottom: 32px;
+}
+
+.loginBtn {
+  gap: 7px;
+}
+
+.wrapBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoutBtn {
+  margin-left: auto;
+}
+
+.mobLogoutBtn {
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.loginIcon {
+  color: var(--light-grey);
+}
+
+.iconBack {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+  transform: rotate(90deg);
+}

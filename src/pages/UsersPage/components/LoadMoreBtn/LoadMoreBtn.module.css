@@ -1,0 +1,28 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  line-height: 1.36em;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid var(--black);
+  transition: color 250ms var(--cubic), background-color 250ms var(--cubic);
+}
+
+.btn:is(:hover, :focus) {
+  border: transparent;
+  color: var(--white);
+  background-color: var(--violet);
+}
+
+.icon {
+  fill: var(--black);
+  transition: fill 250ms var(--cubic);
+}
+
+.btn:is(:hover, :focus) > .icon {
+  fill: var(--white);
+}
