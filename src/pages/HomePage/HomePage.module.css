@@ -3,3 +3,23 @@
   font-size: 64px;
   text-align: center;
 }
+
+.authBtnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding-bottom: 12px;
+}
+
+.loginBtn {
+  gap: 7px;
+}
+
+.loginIcon {
+  color: var(--light-grey);
+}
+
+.authBtn {
+  background-color: var(--violet);
+}

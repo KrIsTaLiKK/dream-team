@@ -12,7 +12,7 @@ export const useLogOut = () => {
       await dispatch(logOut()).unwrap();
       navigate("/");
     } catch (error) {
-      toast.error("Logout failed");
+      toast.error("Ошибка! Выход не удался.");
     }
   };
 

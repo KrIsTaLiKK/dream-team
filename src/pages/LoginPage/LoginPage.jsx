@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
-import AuthForm from "../../shared/components/AuthForm/AuthForm";
-import Container from "../../shared/components/Container/Container";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
-import s from "./LoginPage.module.css";
+import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
+import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
+import AuthForm from "../../shared/components/AuthForm/AuthForm";
+import Container from "../../shared/components/Container/Container";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -25,7 +25,7 @@ const LoginPage = () => {
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values))
       .unwrap()
-      .then(() => toast.success("Вы успешно авторизовались"))
+      .then(() => toast.success("Вы успешно вошли"))
       .catch((error) => {
         error.status === 400 && toast.error("Неправильные логин или пароль");
       })
@@ -34,14 +34,13 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <div className={s.wrap}>
-        <AuthForm
-          handleSubmit={handleSubmit}
-          initialValues={initialValues}
-          login={true}
-          validation={loginSchema}
-        />
-      </div>
+      <HelmetComponent>Войти</HelmetComponent>
+      <AuthForm
+        handleSubmit={handleSubmit}
+        initialValues={initialValues}
+        isLoginForm={true}
+        validation={loginSchema}
+      />
     </Container>
   );
 };

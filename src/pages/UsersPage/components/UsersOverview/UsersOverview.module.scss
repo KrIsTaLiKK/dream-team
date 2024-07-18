@@ -1,0 +1,32 @@
+.usersOverview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  margin: auto;
+  padding: 0 16px 64px;
+  background-color: var(--violet);
+
+  @media screen and (min-width: 1024px) {
+    min-width: 100%;
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    font-size: 36px;
+    color: var(--white);
+
+    @media screen and (min-width: 1024px) {
+      font-size: 64px;
+    }
+  }
+
+  &__description {
+    max-width: clamp(334px, 80%, 800px);
+    font-size: clamp(16px, 2vw, 20px);
+    text-align: center;
+    color: var(--light-grey);
+  }
+}

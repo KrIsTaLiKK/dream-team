@@ -1,0 +1,33 @@
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0;
+  gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 49px 0 108px;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 129px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    order: 2;
+
+    @media screen and (min-width: 768px) {
+      max-width: 630px;
+      order: 1;
+    }
+
+    &_text {
+      line-height: 1.362em;
+      letter-spacing: 0.04em;
+    }
+  }
+}

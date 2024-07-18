@@ -1,14 +1,21 @@
+import { useAuthSelectors } from "../../hooks";
 import Container from "../../shared/components/Container/Container";
-import AuthNav from "../AuthNav/AuthNav";
-import s from "./Header.module.css";
+import NavBar from "../NavBar/NavBar";
+import s from "./Header.module.scss";
 
 const Header = () => {
+  const { isLoggedIn } = useAuthSelectors();
+
   return (
-    <div className={s.header}>
-      <Container>
-        <AuthNav />
-      </Container>
-    </div>
+    <>
+      {isLoggedIn && (
+        <div className={s.header}>
+          <Container>
+            <NavBar />
+          </Container>
+        </div>
+      )}
+    </>
   );
 };
 

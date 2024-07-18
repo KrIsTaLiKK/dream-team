@@ -1,0 +1,92 @@
+.userHeader {
+  height: 100%;
+  margin-bottom: 32px;
+  padding-bottom: 64px;
+  background-color: var(--violet);
+
+  @media screen and (min-width: 768px) {
+    height: 195px;
+    margin-bottom: 49px;
+    padding-bottom: 0;
+    background-color: var(--violet);
+  }
+
+  @media screen and (min-width: 768px) {
+    &__parent {
+      position: relative;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+
+  &__children {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @media screen and (min-width: 768px) {
+      position: absolute;
+      top: -31px;
+      left: 124px;
+      flex-direction: row;
+      gap: 32px;
+    }
+  }
+
+  &__textWrap {
+    order: 1;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      order: 2;
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    color: var(--white);
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 768px) {
+      order: 1;
+      font-size: 45px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 64px;
+    }
+  }
+
+  &__role {
+    font-size: 20px;
+    color: var(--white);
+
+    @media screen and (min-width: 768px) {
+      font-size: 32px;
+    }
+  }
+
+  &__imgWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 187px;
+    height: 187px;
+    border-radius: 50%;
+    overflow: hidden;
+    order: 2;
+    background-color: var(--white);
+
+    @media screen and (min-width: 768px) {
+      order: 1;
+    }
+
+    & > img {
+      min-height: 187px;
+      object-fit: cover;
+    }
+  }
+}

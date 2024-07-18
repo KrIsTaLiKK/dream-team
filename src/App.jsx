@@ -59,7 +59,8 @@ const App = () => {
                 <PrivateRoute redirectTo="/login" component={<UsersPage />} />
               }
             />
-            <Route
+            <Route path="/users/:userId" element={<UserDetailsPage />} />
+            {/* <Route
               path="/users/:userId"
               element={
                 <PrivateRoute
@@ -67,7 +68,7 @@ const App = () => {
                   component={<UserDetailsPage />}
                 />
               }
-            />
+            /> */}
           </Route>
         </Routes>
       </Suspense>

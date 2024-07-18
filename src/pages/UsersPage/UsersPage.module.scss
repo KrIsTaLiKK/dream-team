@@ -1,13 +1,11 @@
-.wrap {
+.usersPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-bottom: 32px;
-}
 
-@media screen and (min-width: 1024px) {
-  .wrap {
+  @media screen and (min-width: 786px) {
     padding-bottom: 69px;
   }
 }

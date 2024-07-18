@@ -1,0 +1,50 @@
+.likeBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 28px;
+  border-radius: 4px;
+  background-color: var(--light-grey);
+  transition: background-color 250ms var(--cubic);
+
+  &:hover {
+    background-color: var(--violet);
+  }
+
+  &__icon {
+    fill: var(--white);
+    stroke: var(--black);
+    transition: fill 250ms var(--cubic);
+
+    &_selected {
+      stroke: var(--violet);
+      fill: var(--violet);
+    }
+  }
+
+  &:hover &__icon {
+    fill: var(--white);
+  }
+}
+
+.pulseHeart {
+  animation: pulse 1000ms infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  70% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

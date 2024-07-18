@@ -1,42 +1,19 @@
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useUsersSelectors } from "../../../../hooks";
-import { toggleFavoriteUsers } from "../../../../redux/users/slice";
-import Icon from "../../../../shared/components/Icon/Icon";
-import s from "./User.module.css";
+import LikeBtn from "../LikeBtn/LikeBtn";
+import s from "./User.module.scss";
 
 const User = ({ user: { avatar, first_name, last_name, id } }) => {
-  const dispatch = useDispatch();
-  const { favoriteUsers } = useUsersSelectors();
-
-  const isFavorite = favoriteUsers?.some((user) => user.id === id);
-
-  const handleToggleFavorite = () => {
-    dispatch(toggleFavoriteUsers(id));
-  };
-
   return (
-    <li className={s.card}>
-      <Link className={s.cardLink} to={`/users/${id}`}>
-        <div className={s.imgWrap}>
+    <li className={s.user}>
+      <Link className={s.user__link} to={`/users/${id}`}>
+        <div className={s.user__imgWrap}>
           <img src={avatar} alt="User" />
         </div>
-        <p className={s.name}>
+        <p className={s.user__name}>
           {first_name} {last_name}
         </p>
       </Link>
-      <button
-        type="button"
-        className={s.likeBtn}
-        onClick={handleToggleFavorite}
-      >
-        <Icon
-          iconId="heart"
-          width={14}
-          height={12}
-          className={`${s.likeIcon} ${isFavorite ? s.favourite : ""}`}
-        />
-      </button>
+      <LikeBtn userId={id} />
     </li>
   );
 };

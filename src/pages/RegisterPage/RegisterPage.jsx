@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
-import AuthForm from "../../shared/components/AuthForm/AuthForm";
-import Container from "../../shared/components/Container/Container";
-import { register } from "../../redux/auth/operations";
-
-import toast from "react-hot-toast";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
+import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
+import Container from "../../shared/components/Container/Container";
+import AuthForm from "../../shared/components/AuthForm/AuthForm";
 
 const registerSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,18 +31,16 @@ const RegisterPage = () => {
   const handleSubmit = (values, actions) => {
     dispatch(register(values))
       .unwrap()
-      .then(() => toast.success("You`ve  successfully signed in"))
+      .then(() => toast.success("Вы успешно зарегистрировались!"))
       .catch((error) => {
-        error.status === 400 &&
-          toast.error(
-            "A user with such data is already signed in. Please enter other data."
-          );
+        error.status === 400 && toast.error("Ошибка регистрации");
       })
       .finally(() => actions.resetForm());
   };
 
   return (
     <Container>
+      <HelmetComponent>зарегистрироваться</HelmetComponent>
       <AuthForm
         handleSubmit={handleSubmit}
         initialValues={initialValues}

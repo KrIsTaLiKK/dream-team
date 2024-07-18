@@ -1,4 +1,4 @@
-.btn {
+.loadMoreBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,19 +10,19 @@
   border-radius: 8px;
   border: 1px solid var(--black);
   transition: color 250ms var(--cubic), background-color 250ms var(--cubic);
-}
 
-.btn:is(:hover, :focus) {
-  border: transparent;
-  color: var(--white);
-  background-color: var(--violet);
-}
+  &:is(:hover, :focus) {
+    border: transparent;
+    color: var(--white);
+    background-color: var(--violet);
+  }
 
-.icon {
-  fill: var(--black);
-  transition: fill 250ms var(--cubic);
-}
+  &__icon {
+    fill: var(--black);
+    transition: fill 250ms var(--cubic);
+  }
 
-.btn:is(:hover, :focus) > .icon {
-  fill: var(--white);
+  &:is(:hover, :focus) > &__icon {
+    fill: var(--white);
+  }
 }
