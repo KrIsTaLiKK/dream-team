@@ -8,6 +8,7 @@ const UserDetailsPage = () => {
   const { userId } = useParams();
 
   const { data, isError, isLoading } = useFetchUserByIdQuery(userId);
+  const userData = data?.data;
 
   return (
     <>
@@ -16,7 +17,7 @@ const UserDetailsPage = () => {
       {isError && (
         <b>Что-то пошло не так. Пожалуйста, перезагрузите страницу!</b>
       )}
-      {data?.data && <UserProfile user={data.data} />}
+      {userData && <UserProfile user={userData} />}
     </>
   );
 };

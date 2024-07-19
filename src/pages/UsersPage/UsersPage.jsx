@@ -9,20 +9,11 @@ import HelmetComponent from "../../shared/components/HelmetComponent/HelmetCompo
 import UsersList from "./components/UsersList/UsersList";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import s from "./UsersPage.module.scss";
+import { useFetchUsers } from "../../hooks/useFetchUsers";
 
 const UsersPage = () => {
-  const { users, currentPage } = useUsersSelectors();
-  const dispatch = useDispatch();
-
-  const { data, isLoading, isError, isFetching } =
-    useFetchUsersQuery(currentPage);
-
-  useEffect(() => {
-    if (data) {
-      dispatch(addUsers({ users: data.users, totalPages: data.totalPages }));
-    }
-  }, [data, dispatch]);
-
+  const { users, isLoading, isError, isFetching, currentPage, totalPages } =
+    useFetchUsers();
   return (
     <>
       <HelmetComponent>Команда</HelmetComponent>
@@ -33,7 +24,7 @@ const UsersPage = () => {
           <b>Что-то пошло не так. Пожалуйста, перезагрузите страницу!</b>
         )}
         {users.length > 0 && <UsersList users={users} />}
-        {currentPage < data?.totalPages && !isFetching && <LoadMoreBtn />}
+        {currentPage < totalPages && !isFetching && <LoadMoreBtn />}
       </section>
     </>
   );

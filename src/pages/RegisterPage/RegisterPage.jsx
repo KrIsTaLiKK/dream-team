@@ -1,7 +1,5 @@
 import * as Yup from "yup";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
+import { useRegister } from "../../hooks";
 import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
 import Container from "../../shared/components/Container/Container";
 import AuthForm from "../../shared/components/AuthForm/AuthForm";
@@ -20,7 +18,6 @@ const registerSchema = Yup.object().shape({
 });
 
 const RegisterPage = () => {
-  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     email: "",
@@ -28,19 +25,11 @@ const RegisterPage = () => {
     passwordRepeat: "",
   };
 
-  const handleSubmit = (values, actions) => {
-    dispatch(register(values))
-      .unwrap()
-      .then(() => toast.success("Вы успешно зарегистрировались!"))
-      .catch((error) => {
-        error.status === 400 && toast.error("Ошибка регистрации");
-      })
-      .finally(() => actions.resetForm());
-  };
+  const handleSubmit = useRegister();
 
   return (
     <Container>
-      <HelmetComponent>зарегистрироваться</HelmetComponent>
+      <HelmetComponent>Зарегистрироваться</HelmetComponent>
       <AuthForm
         handleSubmit={handleSubmit}
         initialValues={initialValues}

@@ -1,0 +1,39 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  height: 100vh;
+  padding-top: 64px;
+
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  &__title {
+    font-size: clamp(30px, 3vw, 50px);
+    color: var(--white);
+    text-align: center;
+  }
+
+  &__description {
+    font-weight: 500;
+    color: var(--white);
+    text-align: center;
+    max-width: clamp(334px, 60%, 800px);
+    font-size: clamp(16px, 3vw, 30px);
+  }
+}
+
+.overlay {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #2e2f42;
+  background-position: center;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.8),
+      rgba(46, 47, 66, 0.8)
+    ),
+    url("/team-bgc.jpg");
+}

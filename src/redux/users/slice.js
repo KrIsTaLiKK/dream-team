@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 const initialState = {
   items: [],
-  favoriteUsers: [],
+  likedUsers: [],
   currentPage: 1,
   totalPages: 1,
 };
@@ -26,37 +26,36 @@ const usersSlice = createSlice({
       state.items = [...state.items, ...filteredUsers];
       state.totalPages = action.payload.totalPages;
     },
-    toggleFavoriteUsers(state, action) {
-      const isInFavorites = state.favoriteUsers.some(
+    toggleLikedUsers(state, action) {
+      const isLiked = state.likedUsers.some(
         (user) => user.id === action.payload
       );
 
-      if (isInFavorites) {
-        const updatedFavorites = state.favoriteUsers.filter(
+      if (isLiked) {
+        const updatedLikedUsers = state.likedUsers.filter(
           (user) => user.id !== action.payload
         );
 
-        state.favoriteUsers = updatedFavorites;
+        state.likedUsers = updatedLikedUsers;
       } else {
-        const favoriteUser = state.items.find(
+        const likedUser = state.items.find(
           (user) => user.id === action.payload
         );
-        state.favoriteUsers.push(favoriteUser);
+        state.likedUsers.push(likedUser);
       }
     },
   },
 });
 
-const favoriteUsersPersistConfig = {
+const likedUsersPersistConfig = {
   key: "users",
   storage,
-  whitelist: ["favoriteUsers"],
+  whitelist: ["likedUsers"],
 };
 
 export const usersReducer = persistReducer(
-  favoriteUsersPersistConfig,
+  likedUsersPersistConfig,
   usersSlice.reducer
 );
 
-export const { incrementPage, addUsers, toggleFavoriteUsers } =
-  usersSlice.actions;
+export const { incrementPage, addUsers, toggleLikedUsers } = usersSlice.actions;

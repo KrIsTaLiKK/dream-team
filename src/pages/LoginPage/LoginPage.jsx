@@ -1,10 +1,8 @@
 import * as Yup from "yup";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { logIn } from "../../redux/auth/operations";
 import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
 import AuthForm from "../../shared/components/AuthForm/AuthForm";
 import Container from "../../shared/components/Container/Container";
+import { useLogIn } from "../../hooks";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,21 +14,12 @@ const loginSchema = Yup.object().shape({
 });
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
   };
 
-  const handleSubmit = (values, actions) => {
-    dispatch(logIn(values))
-      .unwrap()
-      .then(() => toast.success("Вы успешно вошли"))
-      .catch((error) => {
-        error.status === 400 && toast.error("Неправильные логин или пароль");
-      })
-      .finally(() => actions.resetForm());
-  };
+  const { handleSubmit } = useLogIn();
 
   return (
     <Container>

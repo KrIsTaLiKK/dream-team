@@ -16,12 +16,12 @@ const NavBar = () => {
   );
 
   const backBtnContent = isMobile ? (
-    <Icon iconId="arrow" className={s.iconBack} />
+    <Icon iconId="arrow" className={s.nav__iconBack} />
   ) : (
     "Назад"
   );
 
-  const btnClassName = isMobile ? s.mobLogoutBtn : "";
+  const btnClassName = isMobile ? s.nav__mobLogoutBtn : "";
 
   const handleLogOut = useLogOut();
 
@@ -33,7 +33,7 @@ const NavBar = () => {
         </NavBtn>
       )}
       <NavBtn
-        className={clsx(s.logoutBtn, btnClassName)}
+        className={clsx(s.nav__logoutBtn, btnClassName)}
         handleClick={handleLogOut}
       >
         {logoutBtnContent}

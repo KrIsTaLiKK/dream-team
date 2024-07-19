@@ -4,18 +4,18 @@ import {
   selectUsers,
   selectCurrentPage,
   selectTotalPages,
-  selectFavoriteUsers,
+  selectLikedUsers,
 } from "../redux/users/selectors";
 
 export const useUsersSelectors = () => {
   const users = useSelector(selectUsers);
-  const favoriteUsers = useSelector(selectFavoriteUsers);
+  const likedUsers = useSelector(selectLikedUsers);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
 
   return {
     users,
-    favoriteUsers,
+    likedUsers,
     currentPage,
     totalPages,
   };

@@ -1,13 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useAuthSelectors } from "./hooks/index";
-import { refreshUser } from "./redux/auth/operations";
+import { lazy, Suspense } from "react";
+import { useRefreshUserQuery } from "./redux/auth/authApi";
 import PrivateRoute from "./PrivateRoute";
 import RestrictedRoute from "./RestrictedRoute";
 import Layout from "./components/Layout/Layout";
 import ToasterComponent from "./shared/components/ToasterComponent/ToasterComponent";
 import Loader from "./shared/components/Loader/Loader";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
@@ -18,12 +17,7 @@ const UserDetailsPage = lazy(() =>
 );
 
 const App = () => {
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuthSelectors();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+  const { isRefreshing } = useRefreshUserQuery();
 
   return isRefreshing ? (
     <Loader />
@@ -60,16 +54,8 @@ const App = () => {
               }
             />
             <Route path="/users/:userId" element={<UserDetailsPage />} />
-            {/* <Route
-              path="/users/:userId"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<UserDetailsPage />}
-                />
-              }
-            /> */}
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       <ToasterComponent />

@@ -1,27 +1,24 @@
-import NavBtn from "../../shared/components/NavBtn/NavBtn";
+import Container from "../../shared/components/Container/Container";
 import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
-import { BsPersonCircle } from "react-icons/bs";
-import clsx from "clsx";
-import s from "./HomePage.module.css";
+import AuthBtnList from "./components/AuthBtnList/AuthBtnList";
+import s from "./HomePage.module.scss";
 
 const Home = () => {
   return (
-    <div>
-      <HelmetComponent>DreamTeam</HelmetComponent>
-      <h1 className={s.title}>Добро пожаловать в Dream-Team!</h1>
-      <ul className={s.authBtnWrap}>
-        <li>
-          <NavBtn href="/register" className={s.authBtn}>
-            Зарегистрироваться
-          </NavBtn>
-        </li>
-        <li>
-          <NavBtn href="/login" className={clsx(s.loginBtn, s.authBtn)}>
-            <BsPersonCircle className={s.loginIcon} />
-            Войти
-          </NavBtn>
-        </li>
-      </ul>
+    <div className={s.overlay}>
+      <Container>
+        <div className={s.home}>
+          <HelmetComponent>DreamTeam</HelmetComponent>
+          <h1 className={s.home__title}>Добро пожаловать в Dream-Team!</h1>
+          <p className={s.home__description}>
+            Это платформа для создания успешных команд и реализации амбициозных
+            проектов. Мы предлагаем инновационные инструменты и ресурсы, которые
+            помогут вам организовать работу, наладить коммуникацию и достичь
+            ваших целей.
+          </p>
+          <AuthBtnList />
+        </div>
+      </Container>
     </div>
   );
 };

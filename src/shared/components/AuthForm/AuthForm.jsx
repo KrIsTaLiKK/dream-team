@@ -3,6 +3,7 @@ import { Field, Formik, Form, ErrorMessage } from "formik";
 import Icon from "../Icon/Icon";
 import AuthToggleText from "../AuthToggleText/AuthToggleText";
 import s from "./AuthForm.module.scss";
+import HomeBtn from "../HomeBtn/HomeBtn";
 
 const AuthForm = ({
   initialValues,
@@ -32,6 +33,7 @@ const AuthForm = ({
 
   return (
     <div className={s.wrap}>
+      <HomeBtn isAuthenticated={false} />
       <div className={s.authform}>
         <Formik
           initialValues={initialValues}

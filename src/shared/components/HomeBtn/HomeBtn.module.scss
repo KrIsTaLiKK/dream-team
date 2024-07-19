@@ -1,0 +1,16 @@
+.homeBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: var(--violet);
+  border: 1px solid var(--violet);
+  background-color: transparent;
+  transition: color 250ms var(--cubic), background-color 250ms var(--cubic);
+
+  &:is(:hover, :focus) {
+    color: var(--white);
+    background-color: var(--violet);
+  }
+}

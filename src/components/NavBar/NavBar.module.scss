@@ -2,22 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.logoutBtn {
-  margin-left: auto;
-}
+  &__logoutBtn {
+    margin-left: auto;
+  }
 
-.mobLogoutBtn {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-}
+  &__mobLogoutBtn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+  }
 
-.iconBack {
-  width: 20px;
-  height: 20px;
-  fill: var(--white);
-  transform: rotate(90deg);
+  &__iconBack {
+    width: 20px;
+    height: 20px;
+    fill: var(--white);
+    transform: rotate(90deg);
+  }
 }

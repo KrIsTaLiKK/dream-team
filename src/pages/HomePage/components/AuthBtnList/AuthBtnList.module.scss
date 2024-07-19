@@ -1,0 +1,38 @@
+.authBtnList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 12px;
+
+  @media screen and (min-width: 700px) {
+    flex-direction: row;
+    gap: 25px;
+    min-width: 295px;
+    font-size: 30px;
+  }
+
+  &__btn {
+    min-width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    background-color: var(--violet);
+
+    @media screen and (min-width: 768px) {
+      min-width: 295px;
+      padding: 20px 10px;
+      font-size: 20px;
+    }
+
+    &_login {
+      gap: 7px;
+    }
+  }
+
+  &__loginIcon {
+    color: var(--light-grey);
+  }
+}

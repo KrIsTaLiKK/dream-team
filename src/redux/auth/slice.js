@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { authApi } from "./authApi";
 import storage from "redux-persist/lib/storage";
-import { logIn, logOut, refreshUser, register } from "./operations";
+import persistReducer from "redux-persist/es/persistReducer";
 
 const initialState = {
   user: { name: null, email: null },
@@ -13,38 +13,53 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  // reducers: {
+  //   clearAuth(state) {
+  //     state.user = { name: null, email: null };
+  //     state.token = null;
+  //     state.isLoggedIn = false;
+  //   },
+  // },
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logOut.fulfilled, (state) => {
+      .addMatcher(
+        authApi.endpoints.register.matchFulfilled,
+        (state, { payload }) => {
+          state.user = payload.user;
+          state.token = payload.token;
+          state.isLoggedIn = true;
+        }
+      )
+      .addMatcher(
+        authApi.endpoints.logIn.matchFulfilled,
+        (state, { payload }) => {
+          state.user = payload.user;
+          state.token = payload.token;
+          state.isLoggedIn = true;
+        }
+      )
+      .addMatcher(authApi.endpoints.logOut.matchFulfilled, (state) => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(refreshUser.pending, (state) => {
+      .addMatcher(authApi.endpoints.refreshUser.matchPending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
-      })
-      .addCase(refreshUser.rejected, (state) => {
+      .addMatcher(
+        authApi.endpoints.refreshUser.matchFulfilled,
+        (state, { payload }) => {
+          state.user = payload.user;
+          state.token = payload.token;
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+        }
+      )
+      .addMatcher(authApi.endpoints.refreshUser.matchRejected, (state) => {
         state.isRefreshing = false;
       });
   },
 });
-
-const authReducer = authSlice.reducer;
 
 const authPersistConfig = {
   key: "auth",
@@ -52,7 +67,9 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-export const persistedAuthReducer = persistReducer(
-  authPersistConfig,
-  authReducer
-);
+export const authReducer = persistReducer(authPersistConfig, authSlice.reducer);
+
+export const { clearAuth } = authSlice.actions;
+
+export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectIsRefreshing = (state) => state.auth.isRefreshing;
