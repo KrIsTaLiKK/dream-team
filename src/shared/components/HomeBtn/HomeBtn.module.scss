@@ -1,13 +1,18 @@
 .homeBtn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
   padding: 10px 20px;
   font-size: 20px;
   color: var(--violet);
   border: 1px solid var(--violet);
   background-color: transparent;
   transition: color 250ms var(--cubic), background-color 250ms var(--cubic);
+
+  @media screen and (min-width: 786px) {
+    top: 20px;
+    left: 20px;
+  }
 
   &:is(:hover, :focus) {
     color: var(--white);
