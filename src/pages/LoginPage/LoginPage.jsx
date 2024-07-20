@@ -19,7 +19,7 @@ const LoginPage = () => {
     password: "",
   };
 
-  const { handleSubmit } = useLogIn();
+  const handleSubmit = useLogIn();
 
   return (
     <Container>

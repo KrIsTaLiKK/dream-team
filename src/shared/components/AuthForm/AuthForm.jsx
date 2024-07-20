@@ -4,6 +4,7 @@ import Icon from "../Icon/Icon";
 import AuthToggleText from "../AuthToggleText/AuthToggleText";
 import s from "./AuthForm.module.scss";
 import HomeBtn from "../HomeBtn/HomeBtn";
+import clsx from "clsx";
 
 const AuthForm = ({
   initialValues,
@@ -40,111 +41,132 @@ const AuthForm = ({
           onSubmit={handleSubmit}
           validationSchema={validation}
         >
-          <Form className={s.authform__form}>
-            <p className={s.authform__title}>{formTitle}</p>
-            {!isLoginForm && (
+          {({ errors, touched }) => (
+            <Form className={s.authform__form}>
+              <p className={s.authform__title}>{formTitle}</p>
+              {!isLoginForm && (
+                <div className={s.authform__field}>
+                  <label htmlFor={userId} className={s.authform__label}>
+                    Имя
+                  </label>
+                  <Field
+                    name="name"
+                    id={userId}
+                    className={clsx(
+                      s.authform__input,
+                      errors.name && touched.name && s.authform__input_error
+                    )}
+                    placeholder="Кристина"
+                  ></Field>
+                  <ErrorMessage
+                    className={s.authform__error}
+                    name="name"
+                    component="span"
+                  />
+                </div>
+              )}
+
               <div className={s.authform__field}>
-                <label htmlFor={userId} className={s.authform__label}>
-                  Имя
+                <label htmlFor={emailId} className={s.authform__label}>
+                  Электронная почта
                 </label>
                 <Field
-                  name="name"
-                  id={userId}
-                  className={s.authform__input}
-                  placeholder="Кристина"
-                ></Field>
+                  type="email"
+                  name="email"
+                  placeholder="example@mail.ru"
+                  id={emailId}
+                  className={clsx(
+                    s.authform__input,
+                    errors.email && touched.email && s.authform__input_error
+                  )}
+                />
                 <ErrorMessage
-                  className={s.authform__error}
-                  name="name"
+                  name="email"
                   component="span"
+                  className={s.authform__error}
                 />
               </div>
-            )}
 
-            <div className={s.authform__field}>
-              <label htmlFor={emailId} className={s.authform__label}>
-                Электронная почта
-              </label>
-              <Field
-                type="email"
-                name="email"
-                placeholder="example@mail.ru"
-                id={emailId}
-                className={s.authform__input}
-              />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={s.authform__error}
-              />
-            </div>
-
-            <div className={s.authform__field}>
-              <label htmlFor={passwordId} className={s.authform__label}>
-                Пароль
-              </label>
-              <Field
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Введите пароль..."
-                id={passwordId}
-                className={s.authform__input}
-              />
-              <button
-                type="button"
-                onClick={toggleShowPassword}
-                className={s.authform__eyeBtn}
-              >
-                <Icon
-                  iconId={iconEyePass}
-                  width={24}
-                  height={24}
-                  className={s.authform__iconEye}
-                />
-              </button>
-              <ErrorMessage
-                name="password"
-                component="span"
-                className={s.authform__error}
-              />
-            </div>
-
-            {!isLoginForm && (
               <div className={s.authform__field}>
-                <label htmlFor={passwordRepeatId} className={s.authform__label}>
-                  Подтвердите пароль
+                <label htmlFor={passwordId} className={s.authform__label}>
+                  Пароль
                 </label>
                 <Field
-                  type={showPasswordRepeat ? "text" : "password"}
-                  name="passwordRepeat"
-                  id={passwordRepeatId}
-                  className={s.authform__input}
-                  placeholder="Повторите пароль..."
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Введите пароль..."
+                  id={passwordId}
+                  className={clsx(
+                    s.authform__input,
+                    errors.password &&
+                      touched.password &&
+                      s.authform__input_error
+                  )}
                 />
                 <button
                   type="button"
-                  onClick={toggleShowPasswordRepeat}
+                  onClick={toggleShowPassword}
                   className={s.authform__eyeBtn}
                 >
                   <Icon
-                    iconId={iconEyePassRepeat}
+                    iconId={iconEyePass}
                     width={24}
                     height={24}
                     className={s.authform__iconEye}
                   />
                 </button>
                 <ErrorMessage
-                  className={s.authform__error}
-                  name="passwordRepeat"
+                  name="password"
                   component="span"
+                  className={s.authform__error}
                 />
               </div>
-            )}
 
-            <button className={s.authform__submitBtn} type="submit">
-              {submitBtn}
-            </button>
-          </Form>
+              {!isLoginForm && (
+                <div className={s.authform__field}>
+                  <label
+                    htmlFor={passwordRepeatId}
+                    className={s.authform__label}
+                  >
+                    Подтвердите пароль
+                  </label>
+                  <Field
+                    type={showPasswordRepeat ? "text" : "password"}
+                    name="passwordRepeat"
+                    id={passwordRepeatId}
+                    className={clsx(
+                      s.authform__input,
+                      errors.passwordRepeat &&
+                        touched.passwordRepeat &&
+                        s.authform__input_error
+                    )}
+                    placeholder="Повторите пароль..."
+                  />
+                  <button
+                    type="button"
+                    onClick={toggleShowPasswordRepeat}
+                    className={s.authform__eyeBtn}
+                  >
+                    <Icon
+                      iconId={iconEyePassRepeat}
+                      width={24}
+                      height={24}
+                      className={s.authform__iconEye}
+                    />
+                  </button>
+                  <ErrorMessage
+                    className={s.authform__error}
+                    name="passwordRepeat"
+                    component="span"
+                  />
+                </div>
+              )}
+
+              <button className={s.authform__submitBtn} type="submit">
+                {submitBtn}
+              </button>
+            </Form>
+          )}
         </Formik>
         <AuthToggleText isLoginForm={isLoginForm} />
       </div>

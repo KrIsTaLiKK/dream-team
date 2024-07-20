@@ -18,5 +18,5 @@ export const useLogIn = () => {
       .finally(() => actions.resetForm());
   };
 
-  return { handleSubmit };
+  return handleSubmit;
 };

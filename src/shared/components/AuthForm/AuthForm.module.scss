@@ -55,6 +55,10 @@
     background: var(--light-grey);
     font-size: 14px;
     outline: none;
+
+    &_error {
+      border: 1px solid var(--red);
+    }
   }
 
   &__error {
