@@ -1,8 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useFetchUsersQuery } from "../../redux/users/usersApi";
-import { addUsers } from "../../redux/users/slice";
-import { useUsersSelectors } from "../../hooks/useUsersSelectors";
 import UsersOverview from "./components/UsersOverview/UsersOverview";
 import Loader from "../../shared/components/Loader/Loader";
 import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
