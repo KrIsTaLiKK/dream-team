@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+## Обзор
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект - веб-приложение, предназначенное для управления профилями пользователей. В нем можно просматривать общий список партнеров, заходить на личные страницы каждого пользователя, а также взаимодействовать с контентом.
 
-Currently, two official plugins are available:
+## Функциональность
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Регистрация и вход пользователей
+- Пользователь может заходить на свою страницу, загружать и обновлять аватар.
+- Отображение контента в зависимости от роли (например, роль "Партнер" и "Моя страница")
+- Пользователи могут видеть общий список всех партнеров
+- Возможность заходить на личные страницы других пользователей.
+- Возможность ставить лайки другим пользователям.
 
-## Expanding the ESLint configuration
+## Используемые технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: JavaScript-библиотека для создания пользовательских интерфейсов
+- **Redux Toolkit**: Для управления состоянием приложения
+- **React Router**: Для маршрутизации на стороне клиента
+- **Redux Persist**: Для сохранения состояния Redux между сессиями
+- **RTK Query**: Для получения данных
+- **SCSS**: Для стилизации
+- **Vercel**: Для деплоя
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Проект развернут на [Vercel](https://vercel.com)
