@@ -4,3 +4,4 @@ export * from "./useIsMobile";
 export * from "./useRegister";
 export * from "./useLogIn";
 export * from "./useLogOut";
+export * from "./useAvatarUpload";

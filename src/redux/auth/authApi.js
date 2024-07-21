@@ -1,11 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const API_URL = "https://reqres.in/api";
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://reqres.in/api",
+    baseUrl: API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
+
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -44,11 +47,18 @@ export const authApi = createApi({
 
         return {
           data: {
-            user: { name: "Eve Holt", email: "eve.holt@reqres.in" },
+            user: { id: 4 },
             token: persistedToken,
           },
         };
       },
+    }),
+    updateAvatar: builder.mutation({
+      query: ({ userId, formData }) => ({
+        url: `/users/${userId}`,
+        method: "PATCH",
+        body: formData,
+      }),
     }),
   }),
 });
@@ -58,4 +68,5 @@ export const {
   useLogInMutation,
   useLogOutMutation,
   useRefreshUserQuery,
+  useUpdateAvatarMutation,
 } = authApi;

@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { id: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -13,19 +13,12 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  // reducers: {
-  //   clearAuth(state) {
-  //     state.user = { name: null, email: null };
-  //     state.token = null;
-  //     state.isLoggedIn = false;
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
       .addMatcher(
         authApi.endpoints.register.matchFulfilled,
         (state, { payload }) => {
-          state.user = payload.user;
+          state.user = { id: payload.id };
           state.token = payload.token;
           state.isLoggedIn = true;
         }
@@ -33,13 +26,13 @@ const authSlice = createSlice({
       .addMatcher(
         authApi.endpoints.logIn.matchFulfilled,
         (state, { payload }) => {
-          state.user = payload.user;
+          state.user = { id: 4 };
           state.token = payload.token;
           state.isLoggedIn = true;
         }
       )
       .addMatcher(authApi.endpoints.logOut.matchFulfilled, (state) => {
-        state.user = { name: null, email: null };
+        state.user = { id: null };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -49,7 +42,7 @@ const authSlice = createSlice({
       .addMatcher(
         authApi.endpoints.refreshUser.matchFulfilled,
         (state, { payload }) => {
-          state.user = payload.user;
+          state.user = { id: payload.user.id };
           state.token = payload.token;
           state.isLoggedIn = true;
           state.isRefreshing = false;
@@ -64,12 +57,7 @@ const authSlice = createSlice({
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "user"],
 };
 
 export const authReducer = persistReducer(authPersistConfig, authSlice.reducer);
-
-export const { clearAuth } = authSlice.actions;
-
-export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
-export const selectIsRefreshing = (state) => state.auth.isRefreshing;
