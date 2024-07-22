@@ -3,6 +3,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import { useFetchUserByIdQuery } from "../../redux/users/usersApi";
 import Loader from "../../shared/components/Loader/Loader";
 import HelmetComponent from "../../shared/components/HelmetComponent/HelmetComponent";
+import ErrorComponent from "../../shared/components/ErrorComponent/ErrorComponent";
 
 const UserDetailsPage = () => {
   const { userId } = useParams();
@@ -14,9 +15,7 @@ const UserDetailsPage = () => {
     <>
       <HelmetComponent>Партнер</HelmetComponent>
       {isLoading && !isError && <Loader />}
-      {isError && (
-        <b>Что-то пошло не так. Пожалуйста, перезагрузите страницу!</b>
-      )}
+      {isError && <ErrorComponent />}
       {userData && <UserProfile user={userData} />}
     </>
   );

@@ -1,0 +1,22 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 100px;
+  }
+
+  &__text {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      font-size: 50px;
+    }
+  }
+}
